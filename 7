@@ -1,0 +1,17 @@
+#include <iostream>
+#include <cstdlib>
+using namespace std;
+int strange_multiply (int multiplier1,int multiplier2,int product=0) {
+if (abs(multiplier1)>abs(multiplier2)) swap (multiplier1,multiplier2);
+for (int i=0;i<abs(multiplier1);i++){
+if (((multiplier1>=0)&&(multiplier2>=0))||((multiplier1<0)&&(multiplier2<0))) product=product+abs(multiplier2);
+else product=product-abs(multiplier2);
+}
+return product;
+}
+int main(){
+int multiplier1,multiplier2,product=0;
+cin>>multiplier1>>multiplier2;
+cout<<strange_multiply(multiplier1,multiplier2,product);
+return 0;
+}
