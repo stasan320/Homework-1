@@ -7,11 +7,11 @@ for (int i=0;i<abs(multiplier1);i++){
 if (((multiplier1>=0)&&(multiplier2>=0))||((multiplier1<0)&&(multiplier2<0))) product=product+abs(multiplier2);
 else product=product-abs(multiplier2);
 }
-return product;
+cout<<product;
 }
 int main(){
 int multiplier1,multiplier2,product=0;
 cin>>multiplier1>>multiplier2;
-cout<<strange_multiply(multiplier1,multiplier2,product);
+strange_multiply(multiplier1,multiplier2,product);
 return 0;
 }
