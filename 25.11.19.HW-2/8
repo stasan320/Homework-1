@@ -1,0 +1,27 @@
+//Напишите функцию вычисляющую праймориал числа. Программа должна работать не более чем за O(n*log log n) шагов
+#include <iostream>
+using namespace std;
+int primorial(bool B[], int N){
+int i,j;
+for (j=2;j<=N;j++) B[j]=true;
+j=2;
+while (j*j<=N) {
+i=j*j;
+if (B[j])
+while (i<=N) {
+B[i]=false;
+i=i+j;
+}
+j++;
+}
+int p=2;
+for (j=2;j<=N;j++)
+if (B[j]==true) p=p*j;
+cout<<p/2;
+}
+int main() {
+int N;
+cin>>N;
+bool *B=new bool[N];
+primorial(B, N);
+}
