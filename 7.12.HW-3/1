@@ -1,0 +1,22 @@
+/*Корнем будем считать значение x, такое что |f(x)|<10^(-6).
+В комментариях напишите, почему решение- эффективное
+
+Программа эффективна так как состоит только из цикла while, if */
+#include <iostream>
+#include <cmath>
+using namespace std;
+int root(){
+double x;
+double y=x*x*x*x*x-8;
+int b=-8,r;
+double t=pow(10,-6);
+while (b<0&&t>0) b=(b+t)/2;
+r=(b+t)/2;
+if (r>0) r=b;
+else r=t;
+x=pow(r+8,0.2);
+cout<<x;
+}
+int main () {
+root();
+}
