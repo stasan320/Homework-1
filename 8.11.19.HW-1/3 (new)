@@ -1,0 +1,16 @@
+include <iostream>
+using namespace std;
+void build_ziggurat(int *z,int n) {
+for (int i=1;i<=n;i++){
+for (int j=i;j<=n-i+1;j++) {
+    cout<<i;
+}
+cout<<endl;
+}
+}
+int main () {
+    int n;
+    cin>>n;
+int Ziggurat [n];
+build_ziggurat (Ziggurat,n);
+}
