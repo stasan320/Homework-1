@@ -1,0 +1,27 @@
+/*Напишите программу находящую первые n составных чисел.
+Программа должна работать не более чем за O(n*log log n) шагов.
+*/
+#include <iostream>
+using namespace std;
+int composites(int N) {
+bool *B=new bool[N];
+int i,j=2,counter;
+for (j=2;j<=N;j++) B[j]=true;
+while (j*j<=N){
+i=j*j;
+while (i<=N) {
+B[i]=false;
+i=i+j;
+}
+j++;
+}
+for (j=2;j<=N;j++)
+if (B[j]==false) counter++;
+    while (counter<=N) cout<<" "<<j;
+}
+int main() {
+int N;
+cin>>N;
+composites(N);
+return 0;
+}
