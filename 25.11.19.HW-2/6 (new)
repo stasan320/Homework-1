@@ -3,9 +3,7 @@
 Функция должна возвращать общее количество двоек в троичной записи всех чисел массива. */
 #include <iostream>
 using namespace std;
-int main () {
-int n,k;
-cin>>n>>k;
+int twothree(int n, int k) {
 int *a=new int [n];
 int *m=new int [n];
 for (int i=0; i<n; i++) {
@@ -21,4 +19,9 @@ for (int i=0; i<n; i++) {
         for (int i=0; i<n; i++) {
         if (m[i]<k) cout<<a[i];
         }
+}
+int main () {
+int n,k;
+cin>>n>>k;
+twothree(n,k);
 }
