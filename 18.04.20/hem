@@ -1,0 +1,65 @@
+#include <iostream>
+#include <bitset>
+#include <string>
+#include <vector>
+#include <cmath>
+
+using namespace std;
+
+int main() {
+	int k, n, st = 0, c, sum = 0, l2 = 0;
+	string data;
+
+	cout << "Enter k: ";
+	cin >> k;
+	cout << "Enter n: ";
+	cin >> n;
+	cout << "Enter your text:";
+	cin >> data;
+
+	c = n * 8 + floor(log2(n * 8)) + 1;
+
+	if (data.length() != (n * k)) {
+		cout << "Error" << endl;
+		exit(0);
+	}
+	
+	vector<vector<int> > bin_data(k, vector<int>(c, 0));                               //костыль
+	vector<vector<int> > sum_data(k, vector<int>(floor(log2(n * 8)) + 1));
+
+	for (int i = 0; i < k; i++) {
+		for (int j = 0; j < n; j++) {
+			std::bitset<CHAR_BIT> b(data[i * n + j]);
+			for (int l = 0; l < 8; l++) {
+				if ((j * 8 + l + 1) == pow(2, st)) {
+					st++;
+				}
+				else {
+					bin_data[i][j * 8 + l] = b[7 - sum];
+					cout << bin_data[i][j * 8 + l];
+					sum++;
+				}
+			}
+			sum = 0;
+		}
+	}
+
+	for (int i = 0; i < k; i++) {
+		for (int l = 0; l < (floor(log2(n * 8)) + 1); l++) {
+			for (int j = (pow(2, l) - 1); j < c; j = j + pow(2, l + 1)) {
+				for (int j2 = 0; j2 < pow(2, l); j2++) {
+					if ((j + j2) >= c) {
+						continue;
+					}
+					sum_data[i][l] = sum_data[i][l] + bin_data[i][j + j2];
+				}
+			}
+		}
+	}
+
+	for (int i = 0; i < k; i++) {
+		for (int j = 0; j < (floor(log2(n * 8)) + 1); j++) {
+			cout << sum_data[i][j] << endl;
+		}
+	}
+}
