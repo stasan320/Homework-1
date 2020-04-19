@@ -7,7 +7,7 @@
 using namespace std;
 
 int main() {
-	int k, n, st = 0, c, sum = 0, l2 = 0;
+	int k, n, st = 0, c, sum = 0, l2 = 0, bit[8];
 	string data;
 
 	cout << "Enter k: ";
@@ -28,35 +28,53 @@ int main() {
 	vector<vector<int> > sum_data(k, vector<int>(floor(log2(n * 8)) + 1));
 
 	for (int i = 0; i < k; i++) {
-		for (int j = 0; j < n; j++) {
-			std::bitset<CHAR_BIT> b(data[i * n + j]);
-			for (int l = 1; l < 9; l++) {
-				bin_data[i][j * 8 + l] = b[8 - l];
-				cout << bin_data[i][j * 8 + l];
-				sum++;
-				cout << sum + log2(j * 8 + l - 1) << " ";
-
+		for (int j = 0; j < c; j++) {
+			if (log2(j + 1) != st) {
+				if ((j - st) % 8 == 0) {
+					std::bitset<CHAR_BIT> b(data[i * n + sum]);
+					sum++;
+					l2 = 0;
+					for (int l = 0; l < 8; l++) {
+						bit[l] = b[l];
+					}
+				}
+				bin_data[i][j] = bit[l2];
+				cout << bin_data[i][j];
+				l2++;
+			}
+			else {
+				cout << " ";
+				st++;
 			}
 		}
-		cout << endl;
+		sum = 0;
 	}
+
+	cout << endl;
+
+	for (int i = 0; i < k; i++) {
+		for (int j = 0; j < c; j++) {
+			cout << bin_data[i][j];
+		}
+	}
+	cout << endl;
 
 	for (int i = 0; i < k; i++) {
 		for (int l = 0; l < (floor(log2(n * 8)) + 1); l++) {
 			for (int j = (pow(2, l) - 1); j < c; j = j + pow(2, l + 1)) {
+				for (int j3 = 0; j3 < pow(2, l); j3++) {
+					cout << " ";
+				}
 				for (int j2 = 0; j2 < pow(2, l); j2++) {
 					if ((j + j2) >= c) {
 						continue;
 					}
 					sum_data[i][l] = sum_data[i][l] + bin_data[i][j + j2];
+					cout << bin_data[i][j + j2];
 				}
 			}
-		}
-	}
-
-	for (int i = 0; i < k; i++) {
-		for (int j = 0; j < (floor(log2(n * 8)) + 1); j++) {
-			cout << sum_data[i][j] << endl;
+			cout << " = " << sum_data[i][l];
+			cout << endl;
 		}
 	}
 }
