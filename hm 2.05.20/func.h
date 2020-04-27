@@ -52,13 +52,13 @@ long long Num(long long fun, long long n) {
     }
 }
 
-long long Encrypt(long long d, long long n, long long k) {
+long long Encrypt(long long n, long long k) {
     long long  a = 1, msg;
 
-    std::cout << "Enter your num < " << d << ": ";
+    std::cout << "Enter your num < " << k << ": ";
     std::cin >> msg;
 
-    if (msg > d) {
+    if (msg > k) {
         std::cout << "Error";
         exit(1);
     }
@@ -69,9 +69,6 @@ long long Encrypt(long long d, long long n, long long k) {
 
 long long Decrypt(long long c, long long d, long long k) {
     long long a = 1, i;
-    for (i = 0; i < d; i++) {
-        a = a * c;
-        if (a > k) a = a % k;
-    }
+    for (i = 0; i < d; i++) a = c * (a % k);
     return a % k;
 }
