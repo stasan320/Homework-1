@@ -8,8 +8,8 @@ int main() {
 
 	for (int i = 0; i < 2; i++) prime[i] = GenNum();
 
-	std::cout << prime[0] << std::endl;
-	std::cout << prime[1] << std::endl;
+	std::cout << "Num #1: " << prime[0] << std::endl;
+	std::cout << "Num #2: " << prime[1] << std::endl;
 
 
 	fun = (prime[0] - 1) * (prime[1] - 1);
