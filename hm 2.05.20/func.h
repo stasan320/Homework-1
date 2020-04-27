@@ -55,7 +55,7 @@ long long Num(long long fun, long long n) {
 long long Encrypt(long long n, long long k) {
     long long  a = 1, msg;
 
-    std::cout << "Enter your num < " << k << ": ";
+    std::cout << "Enter your num: ";
     std::cin >> msg;
 
     if (msg > k) {
