@@ -58,10 +58,10 @@ long long Encrypt(long long n, long long k) {
     std::cout << "Enter your num: ";
     std::cin >> msg;
 
-    if (msg > k) {
+    /*if (msg > k) {
         std::cout << "Error";
         exit(1);
-    }
+    }*/
 
     for (int i = 0; i < n; i++) a = msg * (a % k);
     return a % k;
